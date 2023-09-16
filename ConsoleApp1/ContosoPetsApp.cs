@@ -80,8 +80,8 @@ do
     Console.WriteLine(" 2. Add a new animal friend to the ourAnimals array");
     Console.WriteLine(" 3. Ensure animal ages and physical descriptions are complete");
     Console.WriteLine(" 4. Ensure animal nicknames and personality descriptions are complete");
-    Console.WriteLine(" 5. Edit an animal’s age");
-    Console.WriteLine(" 6. Edit an animal’s personality description");
+    Console.WriteLine(" 5. Edit an animal's age");
+    Console.WriteLine(" 6. Edit an animal's personality description");
     Console.WriteLine(" 7. Display all cats with a specified characteristic");
     Console.WriteLine(" 8. Display all dogs with a specified characteristic");
     Console.WriteLine();
@@ -107,8 +107,8 @@ do
     Console.WriteLine("Press the Enter key to continue (or type Exit to exit the program)");
 
     // pause code execution
-    readResult = Console.ReadLine();
-    Console.Clear();
+    // readResult = Console.ReadLine();
+    // Console.Clear();
     switch (menuSelection)
     {
         case "1":
@@ -167,7 +167,7 @@ do
                         }
                         else
                         {
-                            validEntry = false;
+                            validEntry = true;
                         }
                     }
                 } while (validEntry == false);
@@ -247,6 +247,43 @@ do
                 Console.WriteLine("We have reached our limit on the number of pets that we can manage.");
                 Console.WriteLine("Press the Enter key to continue.");
                 readResult = Console.ReadLine();
+            }
+            break;
+        case "3":
+           
+            for (int i=0; i< maxPets; i++){
+                 
+                if (ourAnimals[i, 0] != "ID #: "){
+                    //Validate age
+                    Console.WriteLine("hello case 1" + i);
+                    if (ourAnimals[i, 2] == "Age: " || ourAnimals[i, 2] == "Age: ?"){
+                        Console.WriteLine("hello case 11234444ex");
+                        bool validEntry = false;
+                        int petAge = 0;
+                        do{
+                            Console.WriteLine("Enter the age of pet: ");
+                            readResult = Console.ReadLine();
+                            animalAge = readResult;
+                            validEntry = int.TryParse(readResult, out petAge); 
+                        }while (validEntry == false);
+                        ourAnimals[i, 2] = "Age: " + animalAge;
+                    }
+                    //validate physical description
+                    if (ourAnimals[i, 4] == "Physical description: "){
+                        Console.WriteLine("hello case 11234444ex");
+                        bool validEntry = false;
+                        do{
+                            Console.WriteLine($"Enter the physical description of {ourAnimals[i, 0]} pet: ");
+                            readResult = Console.ReadLine();
+                            animalPhysicalDescription = readResult;
+                            if (animalPhysicalDescription != null){
+                                validEntry = true;
+                            }
+                        }while (validEntry == false);
+                        ourAnimals[i, 4] = "Physical description: " + animalPhysicalDescription;
+                    }
+                }
+                
             }
             break;
     }
