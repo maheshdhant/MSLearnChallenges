@@ -21,3 +21,19 @@ Console.WriteLine($"     Total Billed: {total:C}");
 //      Sub Total: $2,750.00
 //            Tax: 15.83%
 //      Total Billed: $3,185.19
+
+////////////////////////////String padding/////////////////////////////
+
+string input = "Pad this";
+Console.WriteLine(input.PadLeft(12)); //Pads left side of input with spaces
+Console.WriteLine(input.PadRight(12)); //Pads right side of input with spaces
+
+Console.WriteLine(input.PadLeft(12, '-')); //Pads left side of input with '-'
+Console.WriteLine(input.PadRight(12, '-')); //Pads right side of input with '-'
+
+///////////////////////////   string.Format() method  /////////////////
+
+string first = "Hello";
+string second = "World";
+string result = string.Format("{0} {1}!", first, second);
+Console.WriteLine(result);
