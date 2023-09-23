@@ -50,3 +50,12 @@ openPosition += 1;
 
 openPosition = fourthMessage.IndexOfAny(openSymbols, openPosition) ;
 Console.WriteLine(fourthMessage.Substring(openPosition));
+
+////////////////////////////// USE OF Remove() and Replace() ///////////////////////////
+
+string randomMessage = "Hello--my--name--is--M-a-d-m-d-x-0-7";
+Console.WriteLine(randomMessage.Remove(randomMessage.IndexOf('s')+1, 17));
+
+randomMessage = randomMessage.Replace("--", " ");
+randomMessage = randomMessage.Replace("-", "");
+Console.WriteLine(randomMessage);
