@@ -21,3 +21,17 @@ void PrintCircleInfo(int radius)
     PrintCircleArea(radius);
     PrintCircleCircumference(radius);
 }
+
+//////////// Passing value and reference type parameter //////////
+string status = "Healthy";
+
+Console.WriteLine($"Start: {status}");
+SetHealth(status, false);
+Console.WriteLine($"End: {status}");
+
+void SetHealth(string status, bool isHealthy) 
+{
+    status = (isHealthy ? "Healthy" : "Unhealthy");
+    Console.WriteLine($"Middle: {status}");
+}
+
