@@ -40,3 +40,16 @@ for (int i = 0; i < external.GetLength(0); i++)
     string email = emailHead + "@" + externalDomain;
     Console.WriteLine(email);
 }
+
+////////////// Display email using function ///////////////
+
+Console.WriteLine();
+for (int i = 0; i < corporate.GetLength(0); i++) 
+{
+   emailGenerator(firstName: corporate[i,0], lastName: corporate[i,1], emailTail: corporateDomain);
+}
+
+for (int i = 0; i < external.GetLength(0); i++) 
+{
+   emailGenerator(firstName: external[i,0], lastName: external[i,1], emailTail: externalDomain);
+}
