@@ -22,3 +22,17 @@ void RandomizeAnimals()
         pettingZoo[r] = temp;
     }
 }
+
+string[,] AnimalsGrouping(int groups = 6)
+{
+    string[,] result = new string[groups, pettingZoo.Length/groups];
+    int count = 0;
+
+    for (int i=0; i<result.GetLength(0); i++){
+        for (int j=0; j<result.GetLength(1); j++){
+            result[i,j] = pettingZoo[count];
+            count++;
+        }
+    }
+    return result;
+}
