@@ -31,14 +31,15 @@ while(terminalOn){
     if (isStart){
         Console.Clear();
         
-        SetPlayerPosition();
+        SetPlayerPosition(playerX, playerY);
         NewFoodLocation();
     }
     int[] foodPosition = GetFoodLocation();
     // if (Console.ReadKey().Key == ConsoleKey.UpArrow || Console.ReadKey().Key == ConsoleKey.DownArrow || Console.ReadKey(true).Key == ConsoleKey.LeftArrow || Console.ReadKey(true).Key == ConsoleKey.RightArrow){
         Move();
         Console.Clear();
-        SetPlayerPosition();
+        SetPlayerPosition(playerX, playerY);
+        CheckPlayerPosition(foodPosition);
         OldFoodLocation(foodPosition[0], foodPosition[1]);
         isStart = false;
     // }
@@ -57,7 +58,7 @@ void OldFoodLocation(int x, int y)
 
 void NewFoodLocation()
 {
-    Console.SetCursorPosition(random.Next(0, width-5), random.Next(0, height-5));  // Food
+    Console.SetCursorPosition(random.Next(5, width-10), random.Next(5, height-10));  // Food
     Console.Write(food);
 }
 
@@ -69,16 +70,18 @@ int[] GetFoodLocation()
 }
 
 // Check player position
-void CheckPlayerPosition()
+void CheckPlayerPosition(int[] foodPosition)
 {
-    int[] foodPosition = GetFoodLocation();
-    if (playerX == foodPosition[0] && playerY == foodPosition[1]){
-
+    if (playerX + player.Length == foodPosition[0] && playerY == foodPosition[1]){
+        player = "@@"+ player;
+        playerX -= 2;
+        SetPlayerPosition(playerX, playerY);
+        NewFoodLocation();
     }
 }
 // Player position
-void SetPlayerPosition(){
-    Console.SetCursorPosition(playerX, playerY);   // Player
+void SetPlayerPosition(int x, int y){
+    Console.SetCursorPosition(x, y);   // Player
     Console.Write(player);
 }
 
