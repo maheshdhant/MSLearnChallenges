@@ -35,14 +35,22 @@ while(terminalOn){
         NewFoodLocation();
     }
     int[] foodPosition = GetFoodLocation();
-    // if (Console.ReadKey().Key == ConsoleKey.UpArrow || Console.ReadKey().Key == ConsoleKey.DownArrow || Console.ReadKey(true).Key == ConsoleKey.LeftArrow || Console.ReadKey(true).Key == ConsoleKey.RightArrow){
-        Move();
-        Console.Clear();
+    Move();
+    Console.Clear();
+    SetPlayerPosition(playerX, playerY);
+
+    bool hasEatenFood = CheckPlayerPosition(foodPosition); // Checks if food is eaten
+    if (hasEatenFood)       
+    {
+        player = "@@"+ player;
+        playerX -= 2;
         SetPlayerPosition(playerX, playerY);
-        CheckPlayerPosition(foodPosition);
-        OldFoodLocation(foodPosition[0], foodPosition[1]);
-        isStart = false;
-    // }
+        NewFoodLocation();
+        foodPosition = GetFoodLocation();
+    }
+
+    OldFoodLocation(foodPosition[0], foodPosition[1]);
+    isStart = false;
 
     if (Console.WindowHeight != height || Console.WindowWidth != width){
         TerminalTerminateGame();
@@ -58,7 +66,7 @@ void OldFoodLocation(int x, int y)
 
 void NewFoodLocation()
 {
-    Console.SetCursorPosition(random.Next(5, width-10), random.Next(5, height-10));  // Food
+    Console.SetCursorPosition(random.Next(10, width-10), random.Next(5, height-10));  // Food
     Console.Write(food);
 }
 
@@ -70,14 +78,12 @@ int[] GetFoodLocation()
 }
 
 // Check player position
-void CheckPlayerPosition(int[] foodPosition)
+bool CheckPlayerPosition(int[] foodPosition)
 {
     if (playerX + player.Length == foodPosition[0] && playerY == foodPosition[1]){
-        player = "@@"+ player;
-        playerX -= 2;
-        SetPlayerPosition(playerX, playerY);
-        NewFoodLocation();
+        return true;
     }
+    else return false;
 }
 // Player position
 void SetPlayerPosition(int x, int y){
