@@ -28,22 +28,22 @@ while(terminalOn){
     }
     
     Move();
-    SetPlayerPosition(playerX, playerY);
+    SetPlayerPosition();
 
     bool hasEatenFood = CheckPlayerPosition(); // Checks if food is eaten
     if (hasEatenFood)       
     {
-        player = "@@"+ player;
+        player = "@@"+ player; // Increases player size after food is eaten
         playerX -= 2;
-        SetPlayerPosition(playerX, playerY);
+        SetPlayerPosition();
         NewFoodLocation();
     }
 }
 
 void NewFoodLocation()
 {
-    foodX = random.Next(10, width-10);
-    foodY = random.Next(5, height-10);
+    foodX = random.Next(0, width);
+    foodY = random.Next(0, height);
     Console.SetCursorPosition(foodX, foodY);  // Food
     Console.Write(food);
 }
@@ -63,7 +63,7 @@ bool CheckPlayerPosition()
 }
 
 // Player position
-void SetPlayerPosition(int x, int y){
+void SetPlayerPosition(){
     // Keep player position within the bounds of the Terminal window
     playerX = (playerX < 0) ? 0 : (playerX >= width ? width : playerX);
     playerY = (playerY < 0) ? 0 : (playerY >= height ? height : playerY);
@@ -116,5 +116,5 @@ void Move(int speed = 1)
 void StartGame(){
     Console.Clear();
     NewFoodLocation();
-    SetPlayerPosition(playerX, playerY);
+    SetPlayerPosition();
 }
