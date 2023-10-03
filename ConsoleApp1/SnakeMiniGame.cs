@@ -68,7 +68,7 @@ void SetPlayerPosition(int x, int y){
     playerX = (playerX < 0) ? 0 : (playerX >= width ? width : playerX);
     playerY = (playerY < 0) ? 0 : (playerY >= height ? height : playerY);
 
-    Console.SetCursorPosition(x, y);   // Player
+    Console.SetCursorPosition(playerX, playerY);   // Player
     Console.Write(player);
 }
 
