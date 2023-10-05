@@ -9,8 +9,7 @@ foreach (string name in names)
     else if (name == "Andrew")
         messageText = AndrewMessage();
     else if (name == "AllGreetings")
-        messageText = SophiaMessage();
-        messageText = messageText + "\n\r" + AndrewMessage();
+        messageText = SophiaMessage() + "\n\r" + AndrewMessage(); // error found corrected after debug
 
     Console.WriteLine(messageText + "\n\r");
 }
