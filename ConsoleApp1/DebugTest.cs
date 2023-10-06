@@ -1,28 +1,33 @@
-string[] names = new string[] { "Sophia", "Andrew", "AllGreetings" };
 
-string messageText = "";
 
-foreach (string name in names)
+// Generates data
+
+static void LoadProducts(string[,] products, int productCount)
 {
-    if (name == "Sophia")
-        messageText = SophiaMessage();
-    else if (name == "Andrew")
-        messageText = AndrewMessage();
-    else if (name == "AllGreetings")
-        messageText = SophiaMessage() + "\n\r" + AndrewMessage(); // error found corrected after debug
+    Random rand = new Random();
 
-    Console.WriteLine(messageText + "\n\r");
-}
+    for (int i = 0; i < productCount; i++)
+    {
+        int num1 = rand.Next(1, 10000) + 10000;
+        int num2 = rand.Next(1, 101);
 
-bool pauseCode = true;
-while (pauseCode == true);
+        string prodID = num1.ToString();
 
-static string SophiaMessage()
-{
-    return "Hello, my name is Sophia.";
-}
+        if (num2 < 91)
+        {
+            products[i, 1] = "existing";
+        }
+        else if (num2 == 91)
+        {
+            products[i, 1] = "new";
+            prodID = prodID + "-n";
+        }
+        else
+        {
+            products[i, 1] = "obsolete";
+            prodID = prodID + "-0";
+        }
 
-static string AndrewMessage()
-{
-    return "Hi, my name is Andrew. Good to meet you.";
+        products[i, 0] = prodID;
+    }
 }
