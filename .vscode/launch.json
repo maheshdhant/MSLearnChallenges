@@ -13,7 +13,7 @@
             "program": "${workspaceFolder}/ConsoleApp1/bin/Debug/net6.0/MicrosoftLearnChallengesInCS.dll",
             "args": [],
             "cwd": "${workspaceFolder}/ConsoleApp1",
-            "console": "internalConsole",
+            "console":"integratedTerminal",
             "stopAtEntry": false
         },
         {
