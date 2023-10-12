@@ -13,8 +13,8 @@ static void Process1()
 {
     try{
         WriteMessage();
-    }catch{
-        Console.WriteLine("Exception caught in process1");
+    }catch(Exception ex){
+        Console.WriteLine($"Exception caught in process1 as: {ex.Message}"); // Message is a property of Exception classj
     }
 }
 
