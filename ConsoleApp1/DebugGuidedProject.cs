@@ -1,7 +1,7 @@
 //////////////////// Store Transaction Management ///////////////////////
 
 string? readResult = null;
-bool useTestData = true;
+bool useTestData = false;
 
 Console.Clear();
 
@@ -132,12 +132,13 @@ static string MakeChange(int cost, int[] cashTill, int twenties, int tens = 0, i
         Console.WriteLine("\t A ten");
     }
 
+
     while ((changeNeeded > 4) && (cashTill[1] > 0))
     {
-        cashTill[2]--;
+        cashTill[1]--;
         changeNeeded -= 5;
         Console.WriteLine("\t A five");
-    }
+    }    
 
     while ((changeNeeded > 0) && (cashTill[0] > 0))
     {
